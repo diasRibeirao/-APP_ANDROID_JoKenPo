@@ -8,7 +8,7 @@
 <br />
 
 ## TIPO AVALIAÇÃO
-### Avaliação Parcial da Disciplina
+### Avaliação Total da Disciplina
 <br />
 
 ## TÍTULO
