@@ -1,5 +1,3 @@
-[![Continous Integration with GitHub](https://github.com/diasRibeirao/41scj-microservices-dev-be/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/diasRibeirao/41scj-microservices-dev-be/actions/workflows/docker-publish.yml)
-
 # INFORMAÇÕES DO TRABALHO 
 <br />
 
