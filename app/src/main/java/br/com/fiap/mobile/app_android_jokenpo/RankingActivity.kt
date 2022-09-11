@@ -17,8 +17,6 @@ class RankingActivity : AppCompatActivity() {
     private val listRanking = ArrayList<String>()
     private val database = FirebaseFirestore.getInstance()
 
-    val rankingList = ArrayList<Ranking>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
