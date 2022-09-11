@@ -1,73 +1,85 @@
 package br.com.fiap.mobile.app_android_jokenpo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import br.com.fiap.mobile.app_android_jokenpo.databinding.ActivityJogarBinding
 import java.util.*
 
 class JogarActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityJogarBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jogar)
-    }
 
-    fun selecionarPedra(view: View?) {
-        this.opcaoSelecionada("Pedra")
-    }
+        binding = ActivityJogarBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    fun selecionarPapel(view: View?) {
-        this.opcaoSelecionada("Papel")
-    }
+        binding.textResultado.setText("Escolha uma opção abaixo")
+        binding.txtPlacarUsuario.text = "0"
+        binding.txtPlacarCPU.text = "0"
 
-    fun selecionarTesoura(view: View?) {
-        this.opcaoSelecionada("Tesoura")
+        binding.imagePedra.setOnClickListener {
+            this.opcaoSelecionada("Pedra")
+        }
+
+        binding.imagePapel.setOnClickListener {
+            this.opcaoSelecionada("Papel")
+        }
+
+        binding.imageTesoura.setOnClickListener {
+            this.opcaoSelecionada("Tesoura")
+        }
     }
 
     fun opcaoSelecionada(escolhaUsuario: String) {
-        val textoResultado = findViewById<TextView>(R.id.textResultado)
-        val placarUsuario = findViewById<TextView>(R.id.placarUsuario)
-        val placarCPU = findViewById<TextView>(R.id.placarCPU)
-        textoResultado.text = "Escolha uma opção abaixo"
-        var contPlacarUsuario = Integer.valueOf(placarUsuario.text.toString())
-        var contPlacarCPU = Integer.valueOf(placarCPU.text.toString())
-        val imageEscolhaCPU = findViewById<ImageView>(R.id.imageEscolhaCPU)
-        val imageResultadoJogador = findViewById<ImageView>(R.id.imageEscolhaJogador)
+        binding.textResultado.setText("Escolha uma opção abaixo")
+
+        var contPlacarUsuario = Integer.valueOf(binding.txtPlacarUsuario.text.toString())
+        var contPlacarCPU = Integer.valueOf(binding.txtPlacarCPU.text.toString())
+
         val jogadas = arrayOf("Pedra", "Papel", "Tesoura")
-        val indice = Random().nextInt(3)
-        val escolhaApp = jogadas[indice]
+        val escolhaApp = jogadas[Random().nextInt(3)]
         when (escolhaApp) {
-            "Pedra" -> imageEscolhaCPU.setImageResource(R.drawable.rock)
-            "Papel" -> imageEscolhaCPU.setImageResource(R.drawable.paper)
-            "Tesoura" -> imageEscolhaCPU.setImageResource(R.drawable.scissor)
+            "Pedra" -> binding.imageEscolhaCPU.setImageResource(R.drawable.rock)
+            "Papel" -> binding.imageEscolhaCPU.setImageResource(R.drawable.paper)
+            "Tesoura" -> binding.imageEscolhaCPU.setImageResource(R.drawable.scissor)
         }
 
         when (escolhaUsuario) {
-            "Pedra" -> imageResultadoJogador.setImageResource(R.drawable.rock)
-            "Papel" -> imageResultadoJogador.setImageResource(R.drawable.paper)
-            "Tesoura" -> imageResultadoJogador.setImageResource(R.drawable.scissor)
+            "Pedra" -> binding.imageEscolhaJogador.setImageResource(R.drawable.rock)
+            "Papel" -> binding.imageEscolhaJogador.setImageResource(R.drawable.paper)
+            "Tesoura" -> binding.imageEscolhaJogador.setImageResource(R.drawable.scissor)
         }
 
-        //VITORIAS DO USUARIO
-        if (escolhaUsuario == "Papel" && escolhaApp == "Pedra" || escolhaUsuario == "Pedra" && escolhaApp == "Tesoura" || escolhaUsuario == "Tesoura" && escolhaApp == "Papel") {
-            contPlacarUsuario = contPlacarUsuario + 1
-            placarUsuario.text = contPlacarUsuario.toString()
-            if (contPlacarUsuario == 9) {
-                textoResultado.text = "Parabens Você venceu !"
-                placarUsuario.text = "0"
-                placarCPU.text = "0"
-            }
-        } else if (escolhaApp == escolhaUsuario) {
-            textoResultado.text = "Empate !"
-        } else {
-            contPlacarCPU = contPlacarCPU + 1
-            placarCPU.text = contPlacarCPU.toString()
-            if (contPlacarCPU == 9) {
-                textoResultado.text = "Você perdeu ! ,Tente novamente"
-                placarCPU.text = "0"
-                placarUsuario.text = "0"
-            }
+        // VITORIA DO USUARIO
+        if (escolhaUsuario == "Papel" && escolhaApp == "Pedra" ||
+            escolhaUsuario == "Pedra" && escolhaApp == "Tesoura" ||
+            escolhaUsuario == "Tesoura" && escolhaApp == "Papel") {
+            contPlacarUsuario  += 2
+            binding.txtPlacarUsuario.text = contPlacarUsuario.toString()
+            binding.textResultado.text = "Parabéns, vitória sua!"
+        } else if (escolhaApp == escolhaUsuario) { // EMPATE
+            binding.textResultado.text = "Empate!"
+            contPlacarUsuario += 1
+            binding.txtPlacarUsuario.text = contPlacarUsuario.toString()
+
+            contPlacarCPU += 1
+            binding.txtPlacarCPU.text = contPlacarCPU.toString()
+        } else { // VITORIA DO APP
+            contPlacarCPU  += 2
+            binding.txtPlacarCPU.text = contPlacarCPU.toString()
+            binding.textResultado.text = "Você perdeu!"
+
+            // FIM DE JOGO
+            var proximaTela = Intent(this, JogoFimActivity::class.java)
+            proximaTela.putExtra("contPlacarUsuario",contPlacarUsuario)
+            proximaTela.putExtra("contPlacarCPU",contPlacarCPU)
+            startActivity(proximaTela)
+            finish()
         }
     }
 }

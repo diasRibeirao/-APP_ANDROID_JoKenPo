@@ -16,6 +16,9 @@
         android:theme="@style/Theme.APP_ANDROID_JoKenPo"
         tools:targetApi="31">
         <activity
+            android:name=".JogoFimActivity"
+            android:exported="false" />
+        <activity
             android:name=".RankingActivity"
             android:exported="false" />
         <activity

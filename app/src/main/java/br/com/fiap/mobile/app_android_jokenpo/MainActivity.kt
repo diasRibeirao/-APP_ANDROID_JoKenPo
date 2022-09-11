@@ -2,40 +2,38 @@ package br.com.fiap.mobile.app_android_jokenpo
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-
+import br.com.fiap.mobile.app_android_jokenpo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnJogar.setOnClickListener {
+            startActivity(Intent(this, JogarActivity::class.java))
+            finish()
+        }
+
+        binding.btnRanking.setOnClickListener {
+            startActivity(Intent(this, RankingActivity::class.java))
+            finish()
+        }
+
+        binding.btnSobre.setOnClickListener {
+            startActivity(Intent(this, SobreActivity::class.java))
+            finish()
+        }
+
+        binding.btnSair.setOnClickListener {
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
     }
-
-    fun abrirJogar(view: View?) {
-        val proximaTela = Intent(this, JogarActivity::class.java)
-        startActivity(proximaTela)
-        finish()
-    }
-
-    fun abrirRanking(view: View?) {
-        val proximaTela = Intent(this, RankingActivity::class.java)
-        startActivity(proximaTela)
-        finish()
-    }
-
-    fun abrirSobre(view: View?) {
-        val proximaTela = Intent(this, SobreActivity::class.java)
-        startActivity(proximaTela)
-        finish()
-    }
-
-    fun sairApp(view: View?) {
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_HOME)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-    }
-
-
 }

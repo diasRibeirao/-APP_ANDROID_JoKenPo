@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "xxx",
+    "project_id": "xxx",
+    "storage_bucket": "xxxxxx"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "xxxxxx",
+        "android_client_info": {
+          "package_name": "br.com.fiap.mobile.app_android_jokenpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "xxxxxx",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "xxxxxx"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "xxxxxx",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

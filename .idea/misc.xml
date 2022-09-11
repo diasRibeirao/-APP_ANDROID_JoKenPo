@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_jogar.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_jogar.xml" value="0.4" />
+        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_jogo_fim.xml" value="0.264" />
         <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_ranking.xml" value="0.4" />
+        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_ranking.xml" value="0.264" />
         <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_sobre.xml" value="0.4" />
         <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/activity_teste.xml" value="0.4" />
+        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/ranking.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/app/src/main/res/layout/ranking_row.xml" value="0.4" />
         <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/jogar/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/progr/AndroidStudioProjects/APP_ANDROID_JoKenPo/sobre/src/main/res/layout/activity_sobre.xml" value="0.22826086956521738" />
       </map>
