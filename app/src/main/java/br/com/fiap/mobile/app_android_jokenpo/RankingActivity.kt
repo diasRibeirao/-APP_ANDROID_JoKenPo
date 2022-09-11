@@ -34,7 +34,8 @@ class RankingActivity : AppCompatActivity() {
         this.listRanking.clear()
 
         database.collection("ranking")
-            .orderBy("pontuacao", Query.Direction.DESCENDING).get()
+            .orderBy("pontuacao", Query.Direction.DESCENDING)
+            .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     this.listRanking.add(document.data.get("nome").toString() + ": " + document.data.get("pontuacao").toString())
